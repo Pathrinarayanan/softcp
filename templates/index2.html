@@ -1,0 +1,42 @@
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<form id="upload-form" enctype="multipart/form-data">
+  <div id="file-inputs">
+    <input type="file" name="file[]" multiple>
+  </div>
+  <button type="button" id="add-file-input">+</button>
+  <button type="submit">Upload</button>
+</form>
+
+<ul>
+    {% for file in files %}
+      <li>{{ file.filename }} <a href="/download/{{ file._id }}">Download</a></li>
+      <li>{{ file.filename }} <a href="/view/{{ file._id }}" target="_blank">view</a></li>
+    {% endfor %}
+    </ul>
+hai    
+
+<script>
+  $(document).ready(function() {
+  $('#add-file-input').click(function() {
+    $('#file-inputs').append('<input type="file" name="file[]" multiple>');
+  });
+  
+  $('#upload-form').submit(function(e) {
+    e.preventDefault();
+    var formData = new FormData($(this)[0]);
+    $.ajax({
+      url: '/upload',
+      type: 'POST',
+      data: formData,
+      async: false,
+      success: function(data) {
+        console.log(data);
+      },
+      cache: false,
+      contentType: false,
+      processData: false
+    });
+  });
+});
+
+</script>

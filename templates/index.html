@@ -1,0 +1,36 @@
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<div id="dynamic-fields">
+    <input type="text" name="suspect_number[]" class="form-control" placeholder="Enter the number">
+  </div>
+  <button type="button" id="add-field" class="btn btn-primary">Add Field</button>
+  <button type="button" id="submit-form" class="btn btn-success">Submit</button>
+
+  <script>
+    // Add a new input field
+$('#add-field').click(function() {
+  var html_sn = '<input type="text" name="suspect_number[]" class="form-control" placeholder="Enter the number">';
+  $('#dynamic-fields').append(html_sn);
+});
+
+// Submit the form data to the server
+$('#submit-form').click(function() {
+  var suspectNumbers = [];
+  var formData = new FormData($(this)[0]);
+  $('input[name="suspect_number[]"]').each(function() {
+    console.log(suspectNumbers);
+    suspectNumbers.push($(this).val());
+  });
+  $.ajax({
+    type: 'POST',
+    url: '/submit',
+    data:formData,// { suspectNumbers: suspectNumbers },
+    success: function(data) {
+      // Handle success response from server
+    },
+    error: function(jqXHR, textStatus, errorThrown) {
+      // Handle error response from server
+    }
+  });
+});
+
+  </script>

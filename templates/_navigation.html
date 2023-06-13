@@ -1,0 +1,38 @@
+<nav class="navbar navbar-dark bg-dark navbar-expand">
+        <a class="navbar-brand" href="#">Madurai CCPS</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="{{ url_for('index') }}">Home <span class="sr-only">(current)</span></a>
+                </li>
+            </ul>
+            <ul class="navbar-nav ml-auto">
+                {% if 'role' in session %}
+                    <li class="nav-item pr-3">
+                        <a href="{{ url_for('all_users') }}" class="nav-link text-light mr-3">All users</a>
+                    </li>
+                    <li class="nav-item pr-3">
+                        <a href="{{ url_for('register_user') }}" class="nav-link text-light mr-3">Add users</a>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                    </li>
+                {% endif %}
+                {% if 'email' in session %}
+                    <li class="nav-item pr-3">
+                        <a class="nav-link text-light mr-3">{{ session['email'] }}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-sm btn-danger" href="{{ url_for('logout') }}">Logout</a>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Login</a>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>

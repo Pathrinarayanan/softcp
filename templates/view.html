@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Report</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap/css/jquery.dataTables.css') }}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <style>
+    
+
+    td,th{
+      font-size: 15px;
+    }
+    
+    /* Add a gray background color and some padding to the footer */
+    footer {
+      background-color: #f2f2f2;
+      padding: 25px;
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar navbar-dark bg-dark navbar-expand">
+    <a class="navbar-brand" href="{{ url_for('index')}}">Madurai CCPS</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        
+        <ul class="navbar-nav ml-auto">
+                
+                <li class="nav-item" style="color: #67e986; font-weight:500;">
+                  <a href="{{ url_for('index')}}" style="text-decoration: none;">Back</a>
+                </li>
+         
+        </ul>
+    </div>
+   
+</nav>
+
+
+<div class="jumbotron">
+  <div class="container text-center">
+    <h3>NCRP: {{ccpsdata.ncrp}}</h3>      
+    <p>Investigating Officer: {{ccpsdata.io }}</p>
+  </div>
+</div>
+  
+<div class="container-fluid bg-3 text-center">    
+  <h3>Type of Fraud: {{ccpsdata.type_of_fraud}}</h3><br>
+  <div class="row">
+    <div class="col-sm-6"  >
+      <table class="table table-bordered text-center table-hover" style="margin: 5px; " >                
+        <tr class="table-success">
+            <th style="text-align: center; border: 1.5px solid black;">SUSPECT NUMBERS</th>                                        
+        </tr>
+         {% for num in suspect_numbers %}
+          <tr>
+            <td style="border: 1px solid rgb(69, 67, 67); ">{{ num }}</td>
+          </tr>
+          {% endfor %}
+      </table>
+    </div>
+    <div class="col-sm-6" > 
+      <table class="table table-bordered text-center table-hover" style="margin: 5px; " >                
+        <tr class="table-danger">
+            <th style="text-align: center; border: 1.5px solid black;">VICTIM NUMBERS</th>                                        
+        </tr>
+         {% for num in victim_numbers %}
+          <tr >
+            <td style="border: 1px solid rgb(69, 67, 67); ">{{ num }}</td>
+          </tr>
+          {% endfor %}
+      </table>
+    </div>
+    </div>
+    <br>
+    <div class="row">
+    <div class="col-sm-6 " > 
+        <p style="border: 1px solid black; padding: 6px; font-weight: bolder">DATE OF OFFENCE: <span style="font-weight: lighter; font-size: 16px;" id="dateOffence"></span></p>
+    </div>
+    <div class="col-sm-6" > 
+        <p style="border: 1px solid black; padding: 6px; font-weight: bolder">DATE OF REPORT: <span style="font-weight: lighter; font-size: 16px;" id="dateReport"></span></p>
+    </div>
+    </div>
+  
+</div><br>
+
+<div class="container-fluid bg-3 text-center">    
+  <div class="row">
+    <div class="col-sm-4">
+        <div class="card-header p-4" style="border: 1.5px solid rgb(159, 2, 2); margin: 2px;">
+          <h5 class="text-uppercase " style="font-weight: bolder;">Property Lost</h5>
+          <div style="color: red; ">
+            <i class="fa fa-rupee" style="font-size:20px"></i> <span class="h3" style="font-size: 22px;" >{{ccpsdata.property_lost}} </span>
+          </div>
+      </div>      
+    </div>
+    <div class="col-sm-4">
+        <div class="card-header p-4" style="border: 1.5px solid rgb(2, 152, 24); margin: 2px;">
+          <h5 class="text-uppercase " style="font-weight: bolder;">Property Recovered</h5>
+          <div style="color: rgb(48, 215, 73);">
+            <i class="fa fa-rupee" style="font-size:20px"></i> <span class="h3" style="font-size: 22px;" >{{ccpsdata.property_recovered}} </span>
+          </div>
+      </div>      
+    </div>
+    <div class="col-sm-4">
+        <div class="card-header p-4" style="border: 1.5px solid rgb(0, 81, 147); margin: 2px;">
+          <h5 class="text-uppercase " style="font-weight: bolder;" >Property Frozen</h5>
+          <div style="color:rgb(61, 158, 237)">
+            <i class="fa fa-rupee" style="font-size:20px"></i> <span class="h3" style="font-size: 22px;" >{{ccpsdata.property_held}} </span>
+          </div>
+      </div>      
+    </div>
+  </div>
+  <br>
+
+  <div class="row">
+    <div class="col-sm-6">
+        <h5 style="text-align: center;font-weight: 700;">Suspect CAF Data</h5>
+        <table class="table table-bordered text-center table-hover" style="margin: 5px;" id="caf_field">                
+            <tr class="table-info">
+                <th style="text-align: center;">Mobile Number</th>
+                <th style="text-align: center;">File</th>                                            
+            </tr>
+             {% for caf in cafdata %}
+            <tr>
+                <td>{{ caf['caf_number'] }}</td>
+                <td>
+                    <a href="{{ url_for('get_caf', file_id=caf['_id'], ncrp=ccpsdata.ncrp) }}" target="_blank">{{ caf['filename']}}</a>
+
+                </td>    
+                </tr>
+            {% endfor %}
+           
+        </table> 
+    </div>
+
+    <div class="col-sm-6">
+      <h5 style="text-align: center; font-weight: 700;">Suspect CDR Data</h5>
+      <table class="table table-bordered text-center table-hover" style="margin: 5px;" id="caf_field">                
+          <tr class="table-info">
+              <th style="text-align: center;">Mobile Number</th>
+              <th style="text-align: center;">File</th>                                            
+          </tr>
+           {% for cdr in cdrdata %}
+          <tr>
+              <td>{{ cdr['cdr_number'] }}</td>
+              <td>
+                  <a href="{{ url_for('get_cdr', file_id=cdr['_id'], ncrp=ccpsdata.ncrp) }}" target="_blank">{{ cdr['filename']}}</a>
+
+              </td>    
+              </tr>
+          {% endfor %}
+      </table> 
+    </div>
+  </div>
+  <br>
+  <h4 style="text-align: center;font-weight: 700;">From Account Details</h4>
+  <div class="row " style="padding: 5px;">
+    <table class="table table-bordered text-center table-hover">
+      <thead class="table-primary">
+      <tr>
+          <th style="text-align: center; ">Bank Name</th>
+          <th style="text-align: center;">IFSC</th>
+          <th style="text-align: center;">Card Type</th>
+          <th style="text-align: center;">Transactions</th>
+      </tr>
+      </thead>
+      {% for fa  in fadata %}
+      <tr>
+          <td>{{fa['fa_name']}}</td>
+          <td>{{fa['fa_ifsc']}}</td>
+          <td>
+            <select id="cardtype" name="cardtype" required>
+              <option value="{{fa['cardtype']}}">{{fa['cardtype']}}</option>                           
+            </select>
+          </td>
+          <td>
+            <table class="table table-bordered text-center table-striped">
+              <tr>
+                <th style="text-align: center;">UPI Reference Number</th>
+                <th style="text-align: center;">Amount</th>
+                <th style="text-align: center;">Date</th>
+              </tr>
+              {% for trans in transdata %}
+              {% if  fa['fa_label'] == trans['fa_bankid']  %}
+              <tr>
+                <td>{{trans['fa_upiref']}}</td>
+                <td>{{trans['fa_amount']}}</td>
+                <td>{{trans['fa_tdate']}}</td>
+              </tr>    
+              {% endif %}
+              {% endfor %}                            
+            </table></td></tr>
+          {% endfor %}
+
+          </table>
+
+  </div>
+
+  <br>
+  <h4 style="text-align: center;font-weight: 700;">To Account Details</h4>
+  <div class="row" style="padding: 5px;">
+    <table class="table table-bordered text-center table-hover" id="toacc_field">
+
+      <tr class="table-danger">
+          <th>Bank Name</th>
+          <th>IFSC</th>
+          <th>UPI ID</th>
+          
+      </tr>{% for ta in tadata %}
+      <tr>
+          <td>{{ta['ta_bankname']}}</td>
+          <td>{{ta['ta_ifsc'] }}</td>
+          <td>{{ta['ta_upiid']}}</td>  
+      </tr>
+      {% endfor %}
+
+  </table>
+  </div>
+
+  <br>
+  <h4 style="text-align: center;font-weight: 700;">Summons</h4>
+  <div class="row" style="padding: 5px;">
+    <table class="table table-bordered text-center table-hover" id="summons">
+
+      <tr class="table-warning">
+          <th>Date</th>
+          <th>Summon Request</th>
+          <th>Summon Response(s)</th>
+      </tr>
+      {% for summon  in summondata %}
+      <tr>
+          
+          <td>{{summon['summon_date']}}</td>
+          <td><a href="{{ url_for('get_summonrequest', file_id=summon['_id'], ncrp=ccpsdata.ncrp) }}" target="_blank">{{summon['summon_filename']}}</a></td>
+          <td>
+            <table class="table table-bordered text-center table-striped" id="summon_responses">
+              <tr>
+                <th>Response(s)</th>                            
+              </tr>
+              {% for response in summon_responses%}
+              {% if response['summon_id'] == summon['summon_id']%}
+              <tr>
+                <td><a href="{{ url_for('get_summonresponse', file_id=response['_id'], ncrp=ccpsdata.ncrp) }}" target="_blank">{{response['summon_filename']}}</a></td>
+              </tr> 
+              {% endif %} 
+              {% endfor %}                              
+            </table>
+                                
+          </td>                      
+      </tr>
+      {% endfor %}                  
+  </table> 
+
+  </div>
+
+</div>
+
+
+<br><br>
+
+<footer class="container-fluid text-center">
+  <p>Footer Text</p>
+</footer>
+
+<script>
+    var dateReport = "{{ ccpsdata.date_report }}";
+    var formattedDate = new Date(dateReport).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+    document.getElementById("dateReport").textContent = formattedDate;
+
+    var dateOffence = "{{ ccpsdata.date_offence }}";
+    var formattedDate = new Date(dateOffence).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+    document.getElementById("dateOffence").textContent = formattedDate;
+
+
+</script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,495 @@
+[
+    {
+        "label": "redirect",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "url_for",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "session",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "Flask",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "render_template",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "request",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "Response",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "redirect",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "url_for",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "jsonify",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "flash",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "send_file",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "make_response",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "session",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "Flask",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "render_template",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "request",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "Response",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "wraps",
+        "importPath": "functools",
+        "description": "functools",
+        "isExtraImport": true,
+        "detail": "functools",
+        "documentation": {}
+    },
+    {
+        "label": "reduce",
+        "importPath": "functools",
+        "description": "functools",
+        "isExtraImport": true,
+        "detail": "functools",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "pymongo",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pymongo",
+        "description": "pymongo",
+        "detail": "pymongo",
+        "documentation": {}
+    },
+    {
+        "label": "MongoClient",
+        "importPath": "pymongo",
+        "description": "pymongo",
+        "isExtraImport": true,
+        "detail": "pymongo",
+        "documentation": {}
+    },
+    {
+        "label": "MongoClient",
+        "importPath": "pymongo",
+        "description": "pymongo",
+        "isExtraImport": true,
+        "detail": "pymongo",
+        "documentation": {}
+    },
+    {
+        "label": "ObjectId",
+        "importPath": "bson.objectid",
+        "description": "bson.objectid",
+        "isExtraImport": true,
+        "detail": "bson.objectid",
+        "documentation": {}
+    },
+    {
+        "label": "ObjectId",
+        "importPath": "bson.objectid",
+        "description": "bson.objectid",
+        "isExtraImport": true,
+        "detail": "bson.objectid",
+        "documentation": {}
+    },
+    {
+        "label": "ObjectId",
+        "importPath": "bson.objectid",
+        "description": "bson.objectid",
+        "isExtraImport": true,
+        "detail": "bson.objectid",
+        "documentation": {}
+    },
+    {
+        "label": "mimetypes",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "mimetypes",
+        "description": "mimetypes",
+        "detail": "mimetypes",
+        "documentation": {}
+    },
+    {
+        "label": "json",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "json",
+        "description": "json",
+        "detail": "json",
+        "documentation": {}
+    },
+    {
+        "label": "login_required",
+        "importPath": "service",
+        "description": "service",
+        "isExtraImport": true,
+        "detail": "service",
+        "documentation": {}
+    },
+    {
+        "label": "login_required",
+        "kind": 2,
+        "importPath": "service.service",
+        "description": "service.service",
+        "peekOfCode": "def login_required(func):\n    @wraps(func)\n    def wrapper(*args, **kwargs):\n        if 'email' in session:\n            return func(*args, **kwargs)\n        else:\n            return redirect(url_for('login'))\n    return wrapper\n# def create_log(email, lgout=None):\n#     with open('logs.txt', 'a') as f:",
+        "detail": "service.service",
+        "documentation": {}
+    },
+    {
+        "label": "process_form",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def process_form():\n    summon_res_ids_json = request.form.get('summon_res_id')\n    summon_res_ids = json.loads(summon_res_ids_json)\n    # process the summon_res_ids list as needed\n    return jsonify({'success': True})\n@app.route(\"/login\", methods=['GET', 'POST'])\ndef login():\n    if request.method == 'POST':\n        email = request.form['email']\n        password = request.form['password']",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "login",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def login():\n    if request.method == 'POST':\n        email = request.form['email']\n        password = request.form['password']\n        print(email, password)\n        if email == 'admin@example.com' and password == 'admin':\n            session[\"email\"] = request.form[\"email\"]\n            return redirect(url_for('index'))\n        else:\n            return redirect(url_for('login'))",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "check_data",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def check_data():\n    data = request.get_json()\n    input_data = data[\"inputData\"]\n    result = db.ccps.find_one({\"ncrp\": input_data})\n    if result:\n        data_exists = True\n    else:\n        data_exists = False\n    return jsonify({\"dataExists\": data_exists})\n@app.route(\"/form\")",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "form",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def form():\n    return render_template(\"insert.html\")\n@app.route(\"/\")\n@login_required\ndef index():\n    collection = db['ccps']\n    data = list(collection.find().sort('_id', pymongo.DESCENDING))\n    for i in range(len(data)):\n        print(data[i]['ncrp'])\n    return render_template(\"home.html\", data=data)",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "index",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def index():\n    collection = db['ccps']\n    data = list(collection.find().sort('_id', pymongo.DESCENDING))\n    for i in range(len(data)):\n        print(data[i]['ncrp'])\n    return render_template(\"home.html\", data=data)\n@app.route(\"/view/<ncrp>\")\n@login_required\ndef view(ncrp):\n    ccpsdata = db.ccps.find_one({'ncrp': ncrp})",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "view",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def view(ncrp):\n    ccpsdata = db.ccps.find_one({'ncrp': ncrp})\n    suspect_numbers = ccpsdata['suspect_numbers'][0]\n    victim_numbers = ccpsdata['victim_numbers'][0]\n    values_to_replace = [\"]\", \"[\", '\"']\n    suspect_numbers = reduce(lambda s, value: s.replace(\n        value, \"\"), values_to_replace, suspect_numbers)\n    victim_numbers = reduce(lambda s, value: s.replace(\n        value, \"\"), values_to_replace, victim_numbers)\n    # to account data",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "get_caf",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def get_caf(ncrp, file_id):\n    cafdata = db.caf.find({'ncrp': ncrp})\n    file_data = None\n    for caf in cafdata:\n        print(str(caf['_id']) == str(file_id))\n        if str(caf['_id']) == file_id:\n            attachment_filename = caf['filename']\n            file_data = caf['data']\n    print(file_data)\n    if file_data:",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "get_cdr",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def get_cdr(ncrp, file_id):\n    cdrdata = db.cdr.find({'ncrp': ncrp})\n    file_data = None\n    for cdr in cdrdata:\n        print(str(cdr['_id']) == str(file_id))\n        if str(cdr['_id']) == file_id:\n            attachment_filename = cdr['filename']\n            file_data = cdr['data']\n    if file_data:\n        mime_type, _ = mimetypes.guess_type(attachment_filename)",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "get_summonrequest",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def get_summonrequest(ncrp, file_id):\n    summondata = list(db.summon_req.find(\n        {'ncrp': ncrp}).sort('_id', pymongo.ASCENDING))\n    file_data = None\n    for req in summondata:\n        print(str(req['_id']) == str(file_id))\n        if str(req['_id']) == file_id:\n            attachment_filename = req['summon_filename']\n            file_data = req['summon_data']\n    if file_data:",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "get_summonresponse",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def get_summonresponse(ncrp, file_id):\n    summondata = list(db.summon_response.find(\n        {'ncrp': ncrp}).sort('_id', pymongo.ASCENDING))\n    file_data = None\n    for req in summondata:\n        print(str(req['_id']) == str(file_id))\n        if str(req['_id']) == file_id:\n            attachment_filename = req['summon_filename']\n            file_data = req['summon_data']\n    if file_data:",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "edit",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def edit():\n    return render_template(\"editpage.html\")\n@app.route('/deletevalues/<ncrp>', methods=['POST', 'GET'])\n@login_required\ndef deletevalues(ncrp):\n    db.ccps.delete_one({'ncrp': ncrp})\n    db.cdr.delete_many({'ncrp': ncrp})\n    db.caf.delete_many({'ncrp': ncrp})\n    db.fa.delete_many({'ncrp': ncrp})\n    db.ta.delete_many({'ncrp': ncrp})",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "deletevalues",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def deletevalues(ncrp):\n    db.ccps.delete_one({'ncrp': ncrp})\n    db.cdr.delete_many({'ncrp': ncrp})\n    db.caf.delete_many({'ncrp': ncrp})\n    db.fa.delete_many({'ncrp': ncrp})\n    db.ta.delete_many({'ncrp': ncrp})\n    db.summon_req.delete_many({'ncrp': ncrp})\n    db.summon_response.delete_many({'ncrp': ncrp})\n    print('deleted: ', ncrp)\n    return redirect(url_for('index'))",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "editvalues",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def editvalues(ncrp):\n    # ncrp = request.form.get('ncrp')\n    print(ncrp)\n    ccpsdata = db.ccps.find_one({'ncrp': ncrp})\n    suspect_numbers = ccpsdata['suspect_numbers'][0]\n    victim_numbers = ccpsdata['victim_numbers'][0]\n    values_to_replace = [\"]\", \"[\", '\"']\n    suspect_numbers = reduce(lambda s, value: s.replace(\n        value, \"\"), values_to_replace, suspect_numbers)\n    victim_numbers = reduce(lambda s, value: s.replace(",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "upload",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def upload():\n    ncrp = request.form.get('ncrp')\n    io = request.form.get('io')\n    result = request.form.get('resval')\n    fraud = request.form.get('type_of_fraud')\n    date_offence = request.form.get('date_offence')\n    date_report = request.form.get('date_report')\n    property_lost = request.form.get('property_lost')\n    property_held = request.form.get('property_held')\n    property_recovered = request.form.get(\"property_recovered\")",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "update",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def update():\n    ncrp = request.form.get('ncrp')\n    io = request.form.get('io')\n    fraud = request.form.get('type_of_fraud')\n    date_offence = request.form.get('date_offence')\n    date_report = request.form.get('date_report')\n    suspect_numbers = request.form.getlist('suspectNumbers')\n    victim_numbers = request.form.getlist('victimNumbers')\n    property_lost = request.form.get('property_lost')\n    property_held = request.form.get('property_held')",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "search",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def search():\n    query = request.args.get('query')\n    print(query)\n    collection = db['ccps']\n    results = collection.find({\"ncrp\": {\"$regex\": query, \"$options\": \"i\"}})\n    print(results)\n    return render_template('search.html', data=results)\n# @app.route('/upload', methods=['POST'])\n# def upload():\n#     files = request.files.getlist('file[]')",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "app",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "app = Flask(__name__)\napp.config[\"SECRET_KEY\"] = \"mysecretkey\"\nclient = MongoClient('mongodb://localhost:27017/')\ndb = client['mydatabase']\ndef process_form():\n    summon_res_ids_json = request.form.get('summon_res_id')\n    summon_res_ids = json.loads(summon_res_ids_json)\n    # process the summon_res_ids list as needed\n    return jsonify({'success': True})\n@app.route(\"/login\", methods=['GET', 'POST'])",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "app.config[\"SECRET_KEY\"]",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "app.config[\"SECRET_KEY\"] = \"mysecretkey\"\nclient = MongoClient('mongodb://localhost:27017/')\ndb = client['mydatabase']\ndef process_form():\n    summon_res_ids_json = request.form.get('summon_res_id')\n    summon_res_ids = json.loads(summon_res_ids_json)\n    # process the summon_res_ids list as needed\n    return jsonify({'success': True})\n@app.route(\"/login\", methods=['GET', 'POST'])\ndef login():",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "client",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "client = MongoClient('mongodb://localhost:27017/')\ndb = client['mydatabase']\ndef process_form():\n    summon_res_ids_json = request.form.get('summon_res_id')\n    summon_res_ids = json.loads(summon_res_ids_json)\n    # process the summon_res_ids list as needed\n    return jsonify({'success': True})\n@app.route(\"/login\", methods=['GET', 'POST'])\ndef login():\n    if request.method == 'POST':",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "db",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "db = client['mydatabase']\ndef process_form():\n    summon_res_ids_json = request.form.get('summon_res_id')\n    summon_res_ids = json.loads(summon_res_ids_json)\n    # process the summon_res_ids list as needed\n    return jsonify({'success': True})\n@app.route(\"/login\", methods=['GET', 'POST'])\ndef login():\n    if request.method == 'POST':\n        email = request.form['email']",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "index",
+        "kind": 2,
+        "importPath": "app1",
+        "description": "app1",
+        "peekOfCode": "def index():\n    return render_template(\"form.html\")\n@app.route('/upload', methods=['POST'])\ndef upload():\n    ncrp = request.form.get('ncrp')\n    io = request.form.get('io')\n    fraud = request.form.get('type_of_fraud')\n    date_offence = request.form.get('date_offence')\n    date_report =request.form.get('date_report')\n    suspect_numbers = request.form.getlist('suspectNumbers')",
+        "detail": "app1",
+        "documentation": {}
+    },
+    {
+        "label": "upload",
+        "kind": 2,
+        "importPath": "app1",
+        "description": "app1",
+        "peekOfCode": "def upload():\n    ncrp = request.form.get('ncrp')\n    io = request.form.get('io')\n    fraud = request.form.get('type_of_fraud')\n    date_offence = request.form.get('date_offence')\n    date_report =request.form.get('date_report')\n    suspect_numbers = request.form.getlist('suspectNumbers')\n    victim_numbers = request.form.getlist('victimNumbers')\n    if date_offence is None:\n    # Set date_offence to current date",
+        "detail": "app1",
+        "documentation": {}
+    },
+    {
+        "label": "app",
+        "kind": 5,
+        "importPath": "app1",
+        "description": "app1",
+        "peekOfCode": "app = Flask(__name__)\nclient = MongoClient('mongodb://localhost:27017/')\ndb = client['mydatabase']\n@app.route(\"/\")\ndef index():\n    return render_template(\"form.html\")\n@app.route('/upload', methods=['POST'])\ndef upload():\n    ncrp = request.form.get('ncrp')\n    io = request.form.get('io')",
+        "detail": "app1",
+        "documentation": {}
+    },
+    {
+        "label": "client",
+        "kind": 5,
+        "importPath": "app1",
+        "description": "app1",
+        "peekOfCode": "client = MongoClient('mongodb://localhost:27017/')\ndb = client['mydatabase']\n@app.route(\"/\")\ndef index():\n    return render_template(\"form.html\")\n@app.route('/upload', methods=['POST'])\ndef upload():\n    ncrp = request.form.get('ncrp')\n    io = request.form.get('io')\n    fraud = request.form.get('type_of_fraud')",
+        "detail": "app1",
+        "documentation": {}
+    },
+    {
+        "label": "db",
+        "kind": 5,
+        "importPath": "app1",
+        "description": "app1",
+        "peekOfCode": "db = client['mydatabase']\n@app.route(\"/\")\ndef index():\n    return render_template(\"form.html\")\n@app.route('/upload', methods=['POST'])\ndef upload():\n    ncrp = request.form.get('ncrp')\n    io = request.form.get('io')\n    fraud = request.form.get('type_of_fraud')\n    date_offence = request.form.get('date_offence')",
+        "detail": "app1",
+        "documentation": {}
+    }
+]

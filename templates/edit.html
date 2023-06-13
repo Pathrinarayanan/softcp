@@ -1,0 +1,664 @@
+<!doctype html>
+
+<html lang="en">
+
+  <head>
+
+    <!-- Required meta tags -->
+
+    <meta charset="utf-8">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+ 
+
+    <!-- Bootstrap CSS -->
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+ 
+
+    <title>CCPS Data</title>
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+        <form  method="post" id="myform" class="insert-form" enctype="multipart/form-data">
+
+          <hr>
+            <h1 class="text-center">Add New Entry</h1>
+          <hr>
+
+          <div class="row">
+            <div class="form-group col-lg-8">
+                <input type="text" name="ncrp" id="ncrp" class="form-control" placeholder="NCRP"  required maxlength="14" minlength="12" value="{{ccpsdata.ncrp}}" readonly>
+            </div>
+            <div class="form-group col-lg-4">
+              <input type="text" name="io" id="io" class="form-control" placeholder="Investigating Officer" value="{{ccpsdata.io}}" >
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="form-group col-lg-4">
+              <h5>Type of Fraud:</h5><input type="text" name="type_of_fraud" id="type_of_fraud" class="form-control" placeholder="Type of Fraud" value="{{ccpsdata.type_of_fraud}}">
+            </div>
+            <div class="form-group col-lg-4">
+                <h5>Date Offence:</h5><input type="date" name="date_offence" id="date_offence" class="form-control" placeholder="dd-mm-yyyy" value="{{ccpsdata.date_offence}}" >
+            </div>
+            <div class="form-group col-lg-4">
+                <h5>Date Report:</h5><input type="date" name="date_report" id="date_report" class="form-control" placeholder="dd-mm-yyyy" value="{{ccpsdata.date_report}}"  >
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group col-lg-4">
+              <h5>Property lost:</h5><input type="text" name="property_lost" id="property_lost" class="form-control" placeholder="Property Lost" value="{{ccpsdata.property_lost}}" >
+            </div>
+            <div class="form-group col-lg-4">
+                <h5>Property held:</h5><input type="text" name="property_held" id="property_held" class="form-control" placeholder="Property Held" value="{{ccpsdata.property_held}}"  >
+            </div>
+            <div class="form-group col-lg-4">
+                <h5>Property recovered:</h5><input type="text" name="property_recovered" id="property_recovered" class="form-control" placeholder="Property Recovered" value="{{ccpsdata.property_recovered}}" >
+            </div>
+          </div>
+
+          <div class="row">        
+            <div class="form-group col-lg-6">
+              <h5>Suspect Number</h5>
+              <div class="input-field">
+                <div class="table-responsive">
+                    <table class="table table-bordered text-center" id="suspect_number">
+                        <tr>
+                            <th>Remove</th>
+                            <th>Mobile Number</th>
+                        </tr>{% for number in suspect_numbers %}
+                       
+                        <tr> 
+                            <td><input class="btn btn-danger" name="remove_sn" id="remove_sn" value="-" type="button"></td>
+                            <td><input type="text" class="form-control" name="suspect_number" value="{{number}}"></td>
+    
+                        </tr>  {% endfor %}
+                    </table>                    
+                </div>
+            </div> 
+              <div class="col-12 text-right">            
+                <input type="button" name="add_sn" id="add_sn" value="+" class="btn btn-success">
+              </div> 
+            </div>
+
+
+            <div class="form-group col-lg-6">
+              <h5>Victim Number</h5>
+              <div class="input-field">
+                <div class="table-responsive">
+                    <table class="table table-bordered text-center" id="victim_number">
+                        <tr>
+                            <th>Remove</th>
+                            <th>Mobile Number</th>
+                        </tr>{% for number in victim_numbers %}
+                        <tr>
+                            <td><input class="btn btn-danger" name="remove_vn" id="remove_vn" value="-" type="button"></td>
+                            <td><input type="text" class="form-control" name="victim_number" value="{{number}}"></td>
+                        </tr> {% endfor %}
+                    </table>                    
+                </div>
+            </div>            
+              <div class="col-12 text-right">                  
+                <input type="button" name="add_vn" id="add_vn" value="+" class="btn btn-success">
+              </div>
+            </div>
+          </div>
+
+          
+          <div class="form-group">
+              <h3>From Account</h3>
+          </div>
+            <div class="input-field">
+                <div class="table-responsive">
+                    <table class="table table-bordered text-center" id="fromacc_field">
+                        <tr>
+                            <th>Remove</th>
+                            <th>Bank Name</th>
+                            <th>IFSC</th>
+                            <th>Card Type</th>
+                            <th>Transactions</th>
+                        </tr>
+                        {% for fa  in fadata %}
+                        <tr>
+                            <td><input class="btn btn-danger" name="remove_fa" id="remove_fa" value="Remove" type="button"></td>
+                            <input type="hidden" class="form-control" name="fa_label" placeholder="" value="{{fa['fa_label']}}" id="bank_id" readonly>
+                            <td><input type="text" class="form-control" name="fa_name" value="{{fa['fa_name']}}" ></td>
+                            <td><input type="text" class="form-control" name="fa_ifsc" value="{{fa['fa_ifsc']}}"></td>
+                            <input type="hidden" name="fa_id" value="{{fa['_id']}}">
+                            <td>
+                              <select id="cardtype" name="cardtype" required>
+                                <option value="{{fa['cardtype']}}">{{fa['cardtype']}}</option>
+                                <option value="credit">Credit Card</option>
+                                <option value="debit">Debit Card</option>    
+                                <option value="">None</option>                            
+                              </select>
+                            </td>
+                            <td>
+                              <table class="table table-bordered text-center" id="transactions_field">
+                                <tr>
+                                  <th>Remove</th>
+                                  <th>UPI Reference Number</th>
+                                  <th>Amount</th>
+                                  <th>Date</th>
+                                </tr>
+                                {% for trans in transdata %}
+                               <!-- fa {{fa['fa_label']}}
+                                trans {{trans['fa_bankid']}} -->
+                                {% if  fa['fa_label'] == trans['fa_bankid']  %}
+                                <tr>
+                                  <td><input class="btn btn-danger" name="remove_upi" id="remove_upi" value="Remove" type="button"></td>
+                                  <td><input type="text" class="form-control" name="fa_upiref" value="{{trans['fa_upiref']}}"></td>
+                                  <input type="hidden" class="form-control" name="tbank_id" value="{{trans['fa_bankid']}}"  required>
+                                  <td><input type="text" class="form-control" name="fa_amount" value="{{trans['fa_amount']}}"></td>
+                                  <td><input type="date" name="fa_transaction_date" class="form-control" placeholder="dd-mm-yyyy" value="{{trans['fa_tdate']}}"></td>
+                                  <input type="hidden" name="trans_id" value="{{trans['_id']}}">
+                                </tr>    {% endif %}
+                                   {% endfor %}                            
+                              </table>
+                              <div class="col-12 text-right">
+                                <input type="button" name="add_upi" id="add_upi" value="Add Transaction" class="btn btn-success">
+                              </div>
+                            </td>
+                        </tr>
+                      
+                        {% endfor %}
+                    </table>
+                    <div class="row">
+                        <div class="col-12 text-right">
+                            <input type="button" name="add_fa" id="add_fa" value="Add Account" class="btn btn-success">
+                        </div>                        
+                    </div>
+                </div>
+            </div>
+            <br>
+
+
+          <div class="form-group">
+              <h3>To Account</h3>
+          </div>
+          
+          <div class="input-field">
+
+            <div class="table-responsive">
+
+                <table class="table table-bordered text-center" id="toacc_field">
+
+                    <tr>
+                        <th>Remove</th>
+                        <th>Bank Name</th>
+                        <th>IFSC</th>
+                        <th>UPI ID</th>
+                        
+                    </tr>{% for ta in tadata %}
+                    <tr>
+
+                        <td><input class="btn btn-danger" name="remove_ta" id="remove_ta" value="Remove" type="button"></td>
+                        <td><input type="text" class="form-control" name="ta_bankname[]" value="{{ta['ta_bankname']}}"></td>
+                        <td><input type="text" class="form-control" name="ta_ifsc[]" value="{{ta['ta_ifsc'] }}" ></td>
+                        <td><input type="text" class="form-control" name="ta_upiid[]" value="{{ta['ta_upiid']}}" ></td>  
+                        <input type="hidden" class="form-control" name="ta_id[]" value="{{ta['_id']}}" >                                         
+                    </tr>
+                    {% endfor %}
+
+                </table>
+                <div class="row">
+                    <div class="col-12 text-right">
+                        <input type="button" name="add_ta" id="add_ta" value="Add Account" class="btn btn-success">
+                    </div>                    
+                </div>
+            </div>
+        </div>
+
+        <br>
+        <div class="form-group">
+          <h3>Summons</h3>
+        </div>
+        
+        <div class="input-field">
+
+          <div class="table-responsive">
+
+              <table class="table table-bordered text-center" id="summons">
+
+                  <tr>
+                      <th>Remove</th>
+                      <th>Date</th>
+                      <th>Summon Request</th>
+                      <th>Summon Response(s)</th>
+                      
+                  </tr>
+                  {% for summon  in summondata %}
+                  <tr>
+                      
+                      <td><input class="btn btn-danger" name="remove_summon" id="remove_summon" value="Remove" type="button"></td>
+                      <td><input type="date" name="summon_date" class="form-control" placeholder="dd-mm-yyyy" value="{{summon['summon_date']}}"></td>
+                      <input type="hidden" name="summon_id" id="summon_id" value="{{summon['summon_id']}}">
+                      <input type="hidden" name="s_req_id" value="{{summon['_id']}}">
+                      <td>current file:<input type="text" class="form-control" name="" value="{{summon['summon_filename']}}" readonly></td>
+                      <td><input type="file" class="form-control" name="summon_request" ></td>
+                      <td>
+                        <table class="table table-bordered text-center" id="summon_responses">
+                          <tr>
+                            <th>Remove</th>
+                            <th>Response</th>                            
+                          </tr>
+                          {% for response in summon_responses%}
+                          {% if response['summon_id'] == summon['summon_id']%}
+                          <tr>
+                            <td><input class="btn btn-danger" name="remove_sr" id="remove_sr" value="Remove" type="button"></td>
+                            <input type="hidden" class="form-control" name="summon_res_id" value="{{response['summon_id']}}">
+                            <td><input type="text" class="form-control" name="" value="{{response['summon_filename']}}" readonly></td>
+                            <td><input type="file" class="form-control" name="summon_response" ></td>     
+                            <input type="hidden" name="s_res_id" value="{{response['_id']}}"    >                   
+                          </tr> {% endif %} {% endfor %}                              
+                        </table>
+                        <div class="col-12 text-right">
+                          <input type="button" name="add_sr" id="add_sr" value="Add Response" class="btn btn-success">
+                        </div>                       
+                      </td>                      
+                  </tr>
+                  {% endfor %}                  
+              </table> 
+              <div class="col-12 text-right">
+                <input type="button" name="add_summon" id="add_summon" value="Add Summon" class="btn btn-success">
+              </div>             
+            </div>
+          </div>
+
+          <br>
+
+          <div class="form-group">
+            <h3>Suspect CAF</h3>
+        </div>
+        
+        <div class="input-field">
+          <div class="table-responsive">
+           
+              <table class="table table-bordered text-center" id="caf_field">
+               
+                  <tr>
+                      <th>Remove</th>
+                      <th>Mobile Number</th>
+                      <th>File</th>                                            
+                  </tr>
+                   {% for caf  in cafdata %}
+                  <tr>
+                      <td><input class="btn btn-danger" name="remove_caf" id="remove_caf" value="Remove" type="button"></td>
+                      <td><input type="text" class="form-control" name="caf_numbers[]"  value="{{caf['caf_number']}}"></td>
+                      <input type="hidden" name="caf_id" value="{{caf['_id']}}"    >  
+                      <td>current file:<input type="text" class="form-control" name="" value="{{caf['filename']}}" readonly></td>
+                      <td><input type="file" class="form-control" name="caf_files[]" ></td> 
+                                        
+                  </tr>{% endfor %}
+                 
+              </table> 
+              <div class="row">
+                  <div class="col-12 text-right">
+                      <input type="button" name="add_caf" id="add_caf" value="Add CAF" class="btn btn-success">
+                  </div>                  
+              </div>
+          </div>
+      </div>
+
+      <br>
+
+          <div class="form-group">
+            <h3>Suspect CDR</h3>
+        </div>
+        
+        <div class="input-field">
+          <div class="table-responsive">
+              <table class="table table-bordered text-center" id="cdr_field">
+                  <tr>
+                      <th>Remove</th>
+                      <th>Mobile Number</th>
+                      <th>File</th>                                            
+                  </tr> {% for cdr  in cdrdata %}
+                  <tr>
+                      <td><input class="btn btn-danger" name="remove_caf" id="remove_cdr" value="Remove" type="button"></td>
+                      <td><input type="text" class="form-control" name="cdr_numbers[]" value="{{cdr['cdr_number']}}"></td>
+                      <input type="hidden" name="cdr_id" value="{{cdr['_id']}}"    >  
+                      <td>current file:<input type="text" class="form-control" name="" value="{{cdr['filename']}}" readonly></td>
+                      <td><input type="file" class="form-control" name="cdr_files[]" multiple ></td>
+                                                               
+                  </tr>{% endfor %}
+              </table>
+              <div class="row">
+                  <div class="col-12 text-right">
+                      <input type="button" name="add_cdr" id="add_cdr" value="Add CDR" class="btn btn-success">
+                  </div>                  
+              </div>
+          </div>
+      </div>
+      <div class="col-12 m-3">
+        <input  name="save" id="submit-forms" value="Save" class="btn btn-primary btn-block">
+      </div>
+        </form>
+    </div>
+
+ 
+
+    <!-- Optional JavaScript -->
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <script >
+      var $j = jQuery.noConflict();
+
+
+        $(document).ready(function() {
+            var  x = "{{falength}}";
+            var y = 1;
+            var summon= "{{summonlength}}";
+        
+            console.log(x);
+
+           
+            var max = 100;
+            var html_ta = '<tr><td><input class="btn btn-danger" name="remove_ta" id="remove_ta" value="Remove" type="button"></td><td><input type="text" class="form-control" name="ta_bankname[]" required></td><td><input type="text" class="form-control" name="ta_ifsc[]" required></td><td><input type="text" class="form-control" name="ta_upiid[]" required></td>                                              </tr>'            
+            var html_sn = '<tr><td><input class="btn btn-danger" name="remove_sn" id="remove_sn " value="-" type="button"></td><td><input type="text" class="form-control" name="suspect_number" required></td></tr>'
+            var html_vn = '<tr><td><input class="btn btn-danger" name="remove_vn" id="remove_vn multiple" value="-" type="button"></td><td><input type="text" class="form-control" name="victim_number" required></td></tr>'
+            var html_caf = '<tr><td><input class="btn btn-danger" name="remove_caf" id="remove_caf multiple " value="Remove" type="button"></td><td><input type="text" class="form-control" name="caf_numbers[]" required></td><td><input type="file" class="form-control" name="caf_files[]" required></td></tr>'
+            var html_cdr = '<tr><td><input class="btn btn-danger" name="remove_caf" id="remove_cdr multiple" value="Remove" type="button"></td><td><input type="text" class="form-control" name="cdr_numbers[]" required></td><td><input type="file" class="form-control" name="cdr_files[]" required></td>                                              </tr>'
+            
+            $("#add_summon").click(function(){
+              var html_summon ='<tr><td><input class="btn btn-danger" name="remove_sr" id="remove_sr" value="Remove" type="button"></td><td><input type="date" name="summon_date" class="form-control" placeholder="dd-mm-yyyy"></td><input type="hidden" class="form-control" name="summon_id" id="summon_id"  value="summon'+ summon +'" required> <td><input type="file" class="form-control" name="summon_request" required></td>                   <td>                        <table class="table table-bordered text-center" id="summon_responses">                          <tr>                            <th>Remove</th>                            <th>Response</th></tr><tr><td><input class="btn btn-danger" name="remove_sr" id="remove_sr" value="Remove" type="button"></td><td><input type="file" class="form-control" name="summon_response" required></td></tr></table><div class="col-12 text-right"><input type="hidden" name="summon_res_id" value="summon'+ summon +'"><input type="button" name="add_sr" id="add_sr" value="Add Response" class="btn btn-success"></div></td></tr>'
+
+                  $("#summons").append(html_summon);
+                  summon++;
+            
+                  console.log("add summon")
+
+            })
+
+      
+
+            $("#add_caf").click(function(){
+                  $("#caf_field").append(html_caf);
+                  console.log("add caf")
+            })
+            $(document).on('click', '#remove_caf', function() {
+              $(this).closest('tr').remove();
+            });
+
+            $("#add_cdr").click(function(){
+                  $("#cdr_field").append(html_cdr);
+                  console.log("add cdr")
+            })
+            $(document).on('click', '#remove_cdr', function() {
+              $(this).closest('tr').remove();
+            });
+
+
+            $("#add_sn").click(function(){
+                  $("#suspect_number").append(html_sn);
+                  console.log("add sn")
+            })
+            $(document).on('click', '#remove_sn', function() {
+              $(this).closest('tr').remove();
+            });
+
+
+            $("#add_vn").click(function(){
+                  $("#victim_number").append(html_vn);
+                  console.log("add vn")
+            })
+            $(document).on('click', '#remove_vn', function() {
+              $(this).closest('tr').remove();
+            });
+
+
+
+            $("#summons").on('click','#add_sr',function(){    
+          
+                  var parentRow = $(this).closest('tr');
+                  var summon_response_table = parentRow.find('#summon_responses');
+                  var summon_id = parentRow.find('#summon_id');
+                  var summonval = summon_id.val();
+                  console.log(summonval);
+                  var html_sr = '<tr><td><input class="btn btn-danger" name="remove_sr" id="remove_sr" value="Remove" type="button"></td><td><input type="file" class="form-control" name="summon_response" required></td><td><input type="hidden" class="form-control" name="summon_res_id" id="summon_response_id"  value="'+ summonval +'" required></td></tr>'
+                  // console.log(html_sr);
+                  summon_response_table.append(html_sr);
+                  console.log("add sr")
+            })
+
+            $("#add_ta").click(function(){
+
+                  $("#toacc_field").append(html_ta);
+                  console.log("add ta")
+
+            })
+
+            $(document).on('click', '#remove_ta', function() {
+              $(this).closest('tr').remove();
+            });
+
+            $(document).on('click', '#remove_summon', function() {
+              $(this).closest('tr').remove();
+            });
+            
+            $(document).on('click', '#remove_sr', function() {
+              $(this).closest('tr').remove();
+            });
+
+
+
+            $("#add_fa").click(function(){
+              var html_fa = '<tr><td><input class="btn btn-danger" name="remove_fa" id="remove_fa" value="Remove" type="button"></td><td><input type="text" class="form-control" name="fa_name" required></td><td><input type="text" class="form-control" name="fa_ifsc" required></td>                            <input type="hidden" class="form-control" name="fa_label" placeholder=""  value="bank'+ x +'" id="bank_id" ><td><select id="cardtype" name="cardtype" required>    <option value="">--Select--</option>    <option value="credit">Credit Card</option>    <option value="debit">Debit Card</option>                                </select></td><td>  <table class="table table-bordered text-center" id="transactions_field">    <tr>      <th>Remove</th>      <th>UPI Reference Number</th>      <th>Amount</th>      <th>Date</th>    </tr>    <tr>      <td><input class="btn btn-danger" name="remove_upi" id="remove_upi" value="Remove" type="button"></td>      <td><input type="text" class="form-control" name="fa_upiref" required></td>      <td><input type="text" class="form-control" name="fa_amount" required></td>      <td><input type="date" name="fa_transaction_date" class="form-control" placeholder="dd-mm-yyyy"></td>  </td></tr><td><input type="text" class="form-control" name="tbank_id" id="tbank_id"  value="bank'+ x +'" required>  </td></tr>  </table>  <div class="col-12 text-right">    <input type="button" name="add_upi" id="add_upi" value="Add Transaction" class="btn btn-success"></div>'            
+
+                if(x <= max){
+      
+                    
+                    $("#fromacc_field").append(html_fa);
+                    
+                    x++;
+
+                }
+
+            })
+
+            $("#fromacc_field").on('click','#add_upi',function(){
+
+                if(y <= max){
+
+                    var parentRow = $(this).closest('tr');
+                    var transactionsFieldTable = parentRow.find('#transactions_field');
+                    var bank_id = parentRow.find('#bank_id');
+                    console.log(bank_id);
+                    console.log(bank_id.val());
+                    var bank_id = bank_id.val();
+                    var html_upi = '<tr><td><input class="btn btn-danger" name="remove_upi" id="remove_upi" value="Remove" type="button"></td><td><input type="text" class="form-control" name="fa_upiref" required></td><td><input type="text" class="form-control" name="fa_amount" required></td><td><input type="date" name="fa_transaction_date" class="form-control" placeholder="dd-mm-yyyy"></td><td><input type="hidden" class="form-control" name="tbank_id" value="'+ bank_id +'"  required></td></tr> '
+
+                    transactionsFieldTable.append(html_upi);
+                    console.log("add upi")
+
+                    y++;
+
+                }
+
+            })
+            
+
+            
+
+
+
+            $("#fromacc_field").on('click', '#remove_fa', function() {
+
+              console.log("here at fa")
+                $(this).closest('tr').remove();
+
+                x--;
+
+            })
+
+            $(document).on('click', '#remove_upi', function() {
+              $(this).closest('tr').remove();
+              y--;
+            }); 
+            $('#submit-forms').click(function() {
+  var suspectNumbers = [];
+  var ta_bankname = [];
+  var fa_upirefs =[]; var tbank_ids=[]; var fa_amounts=[]; var fa_transaction_dates=[];
+  var fa_labels = []; var fa_names =[]; var fa_ifscs = []; var cardtypes=[];
+  var victim_numbers = [];var ta_ifsc =[] ; var ta_upiid = []; var summon_res_ids =[];
+  var summon_dates = [] ; var summon_ids = [];  var ta_id = []; var fa_ids = []; var trans_ids=[];
+  var s_req_id =[]; var s_res_ids = []; var caf_ids =[] ; var cdr_ids = [];
+
+  var ncrp = document.getElementById('ncrp').value;
+  var io = document.getElementById('io').value;
+  var date_offence =  document.getElementById('date_offence').value;
+  var date_report = document.getElementById('date_report').value;
+  var type_of_fraud = document.getElementById('type_of_fraud').value;
+  console.log(date_offence);
+  var formData = new FormData($(myform)[0]);
+
+ 
+  $('input[name="suspect_number"]').each(function() {
+    console.log(suspectNumbers);
+    suspectNumbers.push($(this).val());
+  });
+  $('input[name="victim_number"]').each(function() {
+    victim_numbers.push($(this).val());
+  });
+
+  $('input[name="ta_bankname[]"]').each(function() {
+    ta_bankname.push($(this).val());
+  });
+
+  $('input[name="ta_ifsc[]"]').each(function() {
+    ta_ifsc.push($(this).val());
+  });
+  $('input[name="ta_id[]"]').each(function() {
+    ta_id.push($(this).val());
+  });
+  $('input[name="ta_upiid[]"]').each(function() {
+    ta_upiid.push($(this).val());
+  });
+  $('input[name="fa_label"]').each(function() {
+    fa_labels.push($(this).val());
+  });
+  $('input[name="fa_name"]').each(function() {
+    fa_names.push($(this).val());
+  });
+  $('input[name="fa_ifsc"]').each(function() {
+    fa_ifscs.push($(this).val());
+  });
+  $('input[name="s_req_id"]').each(function() {
+    s_req_id.push($(this).val());
+  });
+  $('input[name="fa_id"]').each(function() {
+    fa_ids.push($(this).val());
+  });
+  $('input[name="cardtype"]').each(function() {
+    cardtypes.push($(this).val());
+  });
+ 
+  $('input[name="fa_upiref"]').each(function() {
+    fa_upirefs.push($(this).val());
+  });
+  $('input[name="tbank_id"]').each(function() {
+    tbank_ids.push($(this).val());
+  });
+  $('input[name="fa_amount"]').each(function() {
+    fa_amounts.push($(this).val());
+  });
+  $('input[name="fa_transaction_date"]').each(function() {
+    fa_transaction_dates.push($(this).val());
+  });
+  $('input[name="trans_id"]').each(function() {
+    trans_ids.push($(this).val());
+  });
+  $('input[name="s_res_id"]').each(function() {
+    s_res_ids.push($(this).val());
+  });
+
+  $('input[name="caf_id"]').each(function() {
+    caf_ids.push($(this).val());
+  });
+  $('input[name="cdr_id"]').each(function() {
+    cdr_ids.push($(this).val());
+  });
+
+  $('input[name="summon_date"]').each(function() {
+    summon_dates.push($(this).val());
+  });
+  $('input[name="summon_id"]').each(function() {
+    summon_ids.push($(this).val());
+  });
+  $('input[name="summon_res_id"]').each(function() {
+    summon_res_ids.push($(this).val());
+  });
+
+  console.log(caf_ids);
+
+
+
+  formData.append('suspectNumbers', JSON.stringify(suspectNumbers));
+  formData.append('victimNumbers', JSON.stringify(victim_numbers));
+  formData.append('ta_banknames',JSON.stringify(ta_bankname));
+  formData.append('ta_ifscs',JSON.stringify(ta_ifsc));
+  formData.append('ta_upiids',JSON.stringify(ta_upiid));
+  formData.append('fa_label',JSON.stringify(fa_labels));
+  formData.append('fa_name',JSON.stringify(fa_names));
+  formData.append('fa_ifsc',JSON.stringify(fa_ifscs));
+  formData.append('cardtype',JSON.stringify(cardtypes));
+  formData.append('fa_upiref',JSON.stringify(fa_upirefs));
+  formData.append('tbank_id[]',JSON.stringify(tbank_ids));
+  formData.append('fa_amount',JSON.stringify(fa_amounts));
+  formData.append('fa_transaction_date',JSON.stringify(fa_transaction_dates));
+  formData.append('summon_date',JSON.stringify(summon_dates));
+  formData.append('summon_id[]',JSON.stringify(summon_ids));
+  formData.append('summon_res_id[]',JSON.stringify(summon_res_ids));
+  formData.append('ta_id',JSON.stringify(ta_id));
+  formData.append('fa_id[]',JSON.stringify(fa_ids));
+  formData.append('trans_id[]',JSON.stringify(trans_ids));
+  formData.append('s_req_id[]',JSON.stringify(s_req_id));
+  formData.append('s_res_id[]',JSON.stringify(s_res_ids));
+  formData.append('caf_id[]',JSON.stringify(caf_ids));
+  formData.append('cdr_id[]',JSON.stringify(cdr_ids));
+  $.ajax({
+    type: 'POST',
+    url: '/update',
+      enctype: 'multipart/form-data',
+    data: formData,
+    contentType: false,
+  processData: false,
+    success: function(data) {
+      // Handle success response from server
+      console.log("success");
+    },
+    error: function(jqXHR, textStatus, errorThrown) {
+      // Handle error response from server
+      console.log(errorThrown);
+      console.log(textStatus);
+      console.log(jqXHR);
+    }
+  });
+});
+                     
+
+        })
+
+    </script>
+
+ 
+
+</body>
+
+</html>
